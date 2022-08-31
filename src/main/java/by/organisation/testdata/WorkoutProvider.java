@@ -7,16 +7,14 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class WorkoutProvider {
-
-    public WorkoutProvider() {
-    }
+public String workoutName = "";
 
     public Workout generateWorkout(){
         Faker faker = new Faker();
         LocalDateTime localDateTime = LocalDateTime.now().plusDays(faker.number().numberBetween(1,30));
         String date = localDateTime.format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
         String timeOfDay = localDateTime.format(DateTimeFormatter.ofPattern("hh:mm a"));
-        String workoutName = faker.company().name();
+        this.workoutName = faker.company().name();
         String workoutDescription = faker.company().suffix();
         Long distance = faker.number().randomNumber();
         String duration = "01:05:00";

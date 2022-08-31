@@ -23,5 +23,4 @@ public class CalendarPage {
     public void openUpdateWorkoutMenu(String workoutName) {
         $x(String.format("//div[contains(text(), '%s')]//ancestor::div[contains(@class, 'dropdown')]//a[contains(text(), 'Update Workout')]", workoutName)).click();
     }
-
 }
