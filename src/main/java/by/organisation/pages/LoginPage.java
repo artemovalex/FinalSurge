@@ -12,6 +12,7 @@ import static org.openqa.selenium.By.id;
 public class LoginPage {
 
 
+
     public LoginPage open() {
         String baseUrl = PropertiesLoader.loadProperties("configuration.properties").getProperty("base.url");
         Selenide.open(baseUrl + "/login.cshtml");

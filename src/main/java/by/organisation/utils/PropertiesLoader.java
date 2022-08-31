@@ -15,20 +15,10 @@ public class PropertiesLoader {
         try (InputStream input = PropertiesLoader.class.getClassLoader().getResourceAsStream(fileName)) {
             //load a properties file from class path, inside static method
             properties.load(input);
-            log.info("   {} ", fileName);
 
         } catch (IOException ex) {
             ex.printStackTrace();
-            log.error("   {} ", fileName, ex.getCause());
         }
-        return properties;
-    }
-
-    public static Properties loadProperties() {
-        Properties properties = loadProperties("config.properties");
-        String user = properties.getProperty("user");
-        Properties userProperties = loadProperties(user + ".properties");
-        properties.putAll(userProperties);
         return properties;
     }
 }

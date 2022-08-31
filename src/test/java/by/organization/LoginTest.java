@@ -33,7 +33,6 @@ public class LoginTest {
 
         new LoginPage().open()
                 .loginWithInvalidData();
-        $x("//button[@type='submit']").shouldBe(visible);
         assertThat($x("//div[contains(@class, 'alert-error')]//strong").getText()).isNotNull()
                 .isEqualTo("Invalid login credentials. Please try again.");
     }

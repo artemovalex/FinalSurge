@@ -13,14 +13,14 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-public class AddWorkoutPage {
+public class CreateWorkoutPage {
 
-    public AddWorkoutPage open() {
+    public CreateWorkoutPage open() {
         String baseUrl = PropertiesLoader.loadProperties("configuration.properties").getProperty("base.url");
         Selenide.open(baseUrl + "/WorkoutAdd.cshtml");
         $x("//ul[@id='breadcrumbs']//a[text()='Add Workout']").shouldBe(visible);
         getWebDriver().manage().window().maximize();
-        return new AddWorkoutPage();
+        return new CreateWorkoutPage();
     }
 
     public void openRunMenu() {
@@ -28,7 +28,7 @@ public class AddWorkoutPage {
         $(By.id("saveButton")).shouldBe(visible);
     }
 
-    public AddWorkoutPage fillInNewWorkoutModal(Workout workout) {
+    public CreateWorkoutPage fillInNewWorkoutModal(Workout workout) {
         new Input("WorkoutDate").fillIn(workout.getDate());
         new Input("WorkoutTime").fillIn(workout.getTimeOfDay());
         new Input("Name").fillIn(workout.getWorkoutName());

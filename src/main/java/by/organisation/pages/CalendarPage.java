@@ -2,7 +2,6 @@ package by.organisation.pages;
 
 import by.organisation.utils.PropertiesLoader;
 import com.codeborne.selenide.Selenide;
-import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
@@ -21,6 +20,15 @@ public class CalendarPage {
     }
 
     public void openUpdateWorkoutMenu(String workoutName) {
+        open();
+        $x(String.format("//div[contains(text(), '%s')]//ancestor::div[contains(@class, 'dropdown')]", workoutName)).click();
         $x(String.format("//div[contains(text(), '%s')]//ancestor::div[contains(@class, 'dropdown')]//a[contains(text(), 'Update Workout')]", workoutName)).click();
+    }
+
+    public void deleteWorkout(String workoutName) {
+        $x(String.format("//div[contains(text(), '%s')]//ancestor::div[contains(@class, 'dropdown')]", workoutName)).click();
+        $x(String.format("//div[contains(text(), '%s')]//ancestor::div[contains(@class, 'dropdown')]//a[contains(text(), 'Delete')]", workoutName)).click();
+        $x("//div[contains(text(),'you want to delete')]//following::div//a[contains(text(),'OK')]").click();
+        $x(String.format("//div[contains(text(), '%s')]//ancestor::div[contains(@class, 'dropdown')]", workoutName)).shouldNotBe(visible);
     }
 }
