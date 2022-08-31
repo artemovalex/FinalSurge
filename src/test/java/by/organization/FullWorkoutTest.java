@@ -70,4 +70,11 @@ public class FullWorkoutTest {
                 .saveWorkout(workoutName);
 
     }
+    @Test
+    public void updateAccountTest() {
+
+
+
+
+    }
 }

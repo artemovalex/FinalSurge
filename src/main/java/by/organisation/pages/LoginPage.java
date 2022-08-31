@@ -30,10 +30,8 @@ public class LoginPage {
     }
 
     public void loginWithInvalidData() {
-        String login = PropertiesLoader.loadProperties("configuration.properties").getProperty("invalidUserName");
-        String password = PropertiesLoader.loadProperties("configuration.properties").getProperty("invalidPassword");
-        $(id("login_name")).shouldBe(visible).sendKeys(login);
-        $(id("login_password")).shouldBe(visible).sendKeys(password);
+        $(id("login_name")).shouldBe(visible).sendKeys("test@mail.ru");
+        $(id("login_password")).shouldBe(visible).sendKeys("12345");
         $x("//button[@type='submit']").shouldBe(visible).click();
         new LoginPage();
     }
