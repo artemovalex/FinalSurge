@@ -2,6 +2,7 @@ package by.organisation.pages;
 
 import by.organisation.utils.PropertiesLoader;
 import com.codeborne.selenide.Selenide;
+import org.openqa.selenium.WebElement;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
@@ -10,7 +11,6 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.openqa.selenium.By.id;
 
 public class LoginPage {
-
 
 
     public LoginPage open() {
@@ -35,5 +35,9 @@ public class LoginPage {
         $(id("login_password")).shouldBe(visible).sendKeys("12345");
         $x("//button[@type='submit']").shouldBe(visible).click();
         new LoginPage();
+    }
+
+    public WebElement getError() {
+        return $x("//div[contains(@class, 'alert-error')]//strong");
     }
 }

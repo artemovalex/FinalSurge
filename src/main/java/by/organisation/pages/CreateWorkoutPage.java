@@ -47,4 +47,8 @@ public class CreateWorkoutPage {
         $(By.id("saveButton")).click();
         $x(String.format("//div[text()='%s']", workoutName)).shouldBe(visible);
     }
+
+    public String getTitle() {
+        return $x("//div[@id='col1']//h4").getText();
+    }
 }

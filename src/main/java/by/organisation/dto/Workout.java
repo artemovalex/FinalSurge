@@ -18,6 +18,7 @@ public class Workout {
     private String duration;
     private Long pace;
     private Long perceivedEffort;
+    private String activityType;
     private Long minHR;
     private Long avgHR;
     private Long maxHR;

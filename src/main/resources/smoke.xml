@@ -8,12 +8,7 @@
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="by.organization.FullWorkoutTest"/>
-        </classes>
-    </test>
-    <test name="Edge">
-        <parameter name="browser" value="edge"/>
-        <classes>
-            <class name="by.organization.FullWorkoutTest"/>
+            <class name="by.organization.QuickAddWorkoutTest"/>
         </classes>
     </test>
 </suite>

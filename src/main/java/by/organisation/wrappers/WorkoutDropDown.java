@@ -17,4 +17,9 @@ public class WorkoutDropDown {
         $(By.id(label)).click();
         $x(String.format("//select[@name='%s']//option[@value='%s']", label, option)).click();
     }
+
+    public void selectActivityType(String option) {
+        $(By.id(label)).click();
+        $x(String.format("//select[@name='%s']//option[text()='%s']", label, option)).click();
+    }
 }

@@ -1,30 +1,29 @@
 package by.organization;
 
+import by.organisation.pages.CalendarPage;
 import by.organisation.pages.LoginPage;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.Test;
 
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.openqa.selenium.By.id;
+import static org.testng.Assert.assertTrue;
 
 @Data
-@AllArgsConstructor
 @Log4j2
 
 public class LoginTest {
+
+    LoginPage loginPage = new LoginPage();
+    CalendarPage calendarPage = new CalendarPage();
 
     @Test
     public void loginWithValidData() {
 
         new LoginPage().open()
                 .loginWithValidData();
-        $(id("CalendarContent")).shouldBe(visible);
-        assertThat($x("//ul[@id='breadcrumbs']//a[contains(@href, 'Calendar')]").getText()).isNotNull()
+        assertTrue(calendarPage.getCalendar().isDisplayed(), "User was not logged in");
+        assertThat(calendarPage.getBreadcrumbsCalendar().getText())
                 .isEqualTo("Training Calendar");
     }
 
@@ -33,7 +32,7 @@ public class LoginTest {
 
         new LoginPage().open()
                 .loginWithInvalidData();
-        assertThat($x("//div[contains(@class, 'alert-error')]//strong").getText()).isNotNull()
+        assertThat(loginPage.getError().getText()).isNotNull()
                 .isEqualTo("Invalid login credentials. Please try again.");
     }
 }
