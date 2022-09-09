@@ -3,7 +3,6 @@ package by.organization;
 import by.organisation.dto.Workout;
 import by.organisation.pages.*;
 import by.organisation.testdata.WorkoutProvider;
-import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -11,7 +10,6 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-@Data
 @Log4j2
 public class FullWorkoutTest {
     WorkoutProvider workoutProvider = new WorkoutProvider();
@@ -25,7 +23,7 @@ public class FullWorkoutTest {
     public void login() {
         new LoginPage().open()
                 .loginWithValidData();
-      workoutProvider.generateWorkout();
+        workoutProvider.generateWorkout();
     }
 
     @Test()

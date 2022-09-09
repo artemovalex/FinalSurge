@@ -1,21 +1,17 @@
 package by.organization;
 
-import by.organisation.pages.*;
+import by.organisation.pages.CalendarPage;
+import by.organisation.pages.LoginPage;
 import by.organisation.testdata.QuickWorkoutProvider;
-import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
 
-@Data
 @Log4j2
 public class QuickAddWorkoutTest {
-    CreateWorkoutPage createWorkoutPage = new CreateWorkoutPage();
     CalendarPage calendarPage = new CalendarPage();
-    UpdateWorkoutPage updateWorkoutPage = new UpdateWorkoutPage();
-    WorkoutDetailsPage workoutDetailsPage = new WorkoutDetailsPage();
     QuickWorkoutProvider quickWorkoutProvider = new QuickWorkoutProvider();
 
   @BeforeClass
