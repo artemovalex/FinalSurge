@@ -12,9 +12,8 @@ public class QuickWorkoutProvider {
 
     public Workout generateWorkout() {
         Faker faker = new Faker();
-        LocalDateTime localDateTime = LocalDateTime.now().plusDays(faker.number().numberBetween(1, 10));
+        LocalDateTime localDateTime = LocalDateTime.now().plusDays(faker.number().numberBetween(1, 5));
         this.workoutName = faker.company().profession();
-
 
         return Workout.builder()
                 .date(localDateTime.format(DateTimeFormatter.ofPattern("MM/dd/yyyy")))

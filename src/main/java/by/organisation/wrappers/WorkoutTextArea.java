@@ -1,6 +1,5 @@
 package by.organisation.wrappers;
 
-import by.organisation.testdata.WorkoutProvider;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;

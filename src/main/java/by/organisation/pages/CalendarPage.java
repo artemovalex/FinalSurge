@@ -8,6 +8,7 @@ import by.organisation.wrappers.WorkoutTextArea;
 import com.codeborne.selenide.Selenide;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
 import static com.codeborne.selenide.Condition.visible;
@@ -35,12 +36,20 @@ public class CalendarPage {
     }
 
     public void deleteWorkout(String workoutName) {
-        $x(String.format("//div[contains(text(), '%s')]//ancestor::div[contains(@class, 'dropdown')]", workoutName)).click();
+        $x(String.format("//div[contains(text(), '%s')]//ancestor::div[contains(@class, 'dropdown')]", workoutName)).hover().click();
         $x(String.format("//div[contains(text(), '%s')]//ancestor::div[contains(@class, 'dropdown')]//a[contains(text(), 'Delete')]", workoutName)).click();
-        $x("//div[contains(text(),'you want to delete')]//following::div//a[contains(text(),'OK')]").click();
+        $x("//div[@class='modal-body']//following::a[contains(text(),'OK')]").click();
         $x(String.format("//div[contains(text(), '%s')]//ancestor::div[contains(@class, 'dropdown')]", workoutName)).shouldNotBe(visible);
     }
 
+    public boolean workoutIsDeleted(String workoutName) {
+        try {
+            $x(String.format("//div[contains(text(), '%s')]//ancestor::div[contains(@class, 'dropdown')]", workoutName));
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
     public WebElement getCalendar() {
         return $(id("CalendarContent"));
     }

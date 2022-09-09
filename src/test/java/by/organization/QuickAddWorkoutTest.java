@@ -25,7 +25,7 @@ public class QuickAddWorkoutTest {
       quickWorkoutProvider.generateWorkout();
   }
 
-    @Test(priority = 1)
+    @Test(priority = 3)
     public void quickCreateWorkoutTest() {
         calendarPage.open()
                 .openQuickMenu();
@@ -37,10 +37,12 @@ public class QuickAddWorkoutTest {
         log.info("Quick workout create");
         }
 
-    @Test(priority = 2)
+    @Test(priority = 4)
     public void deleteQuickWorkoutTest() {
-        calendarPage.open();
-        calendarPage.deleteWorkout(quickWorkoutProvider.workoutName);
+        calendarPage.open()
+                    .deleteWorkout(quickWorkoutProvider.workoutName);
+        assertTrue(calendarPage.workoutIsDeleted(quickWorkoutProvider.workoutName), "Workout is not deleted");
+        log.info("Delete workout");
         calendarPage.logout();
     }
 }
