@@ -50,6 +50,7 @@ public class CalendarPage {
             return false;
         }
     }
+
     public WebElement getCalendar() {
         return $(id("CalendarContent"));
     }

@@ -13,6 +13,7 @@ public class WorkoutTextArea {
     }
 
     public void fillIn(String text) {
+        $(By.id(label)).clear();
         $(By.id(label)).sendKeys(text);
     }
 }

@@ -22,25 +22,25 @@ public class FullWorkoutTest {
     @BeforeClass
     public void login() {
         new LoginPage().open()
-                .loginWithValidData();
+                       .loginWithValidData();
         workoutProvider.generateWorkout();
     }
 
     @Test()
     public void createWorkoutTest() {
         createWorkoutPage.open()
-                .openRunMenu();
+                         .openRunMenu();
         assertEquals(createWorkoutPage.getTitle(), "ADD NEW WORKOUT", "Add new workout forms is not opened");
         log.info("Open  create workout page");
         actualWorkout = workoutProvider.generateWorkout();
         createWorkoutPage.fillInNewWorkoutModal(actualWorkout)
-                .saveWorkout(workoutProvider.workoutName);
+                         .saveWorkout(workoutProvider.workoutName);
         assertEquals(workoutDetailsPage.getUpdateWorkoutButton().getText(), "Update Workout", "Workout is not created");
         assertEquals(workoutDetailsPage.getWorkoutName(), actualWorkout.getWorkoutName(), "Workout Name is invalid");
         assertEquals(workoutDetailsPage.getWorkoutDesc(), "Workout Description:\n" + actualWorkout.getWorkoutDescription(), "Workout Description is invalid");
-        // assertEquals(workoutDetailsPage.getWorkoutMinHR().getText(), actualWorkout.getMinHR().toString(), "Workout Min HR is invalid");
-        // assertEquals(workoutDetailsPage.getWorkoutAvgHR(), actualWorkout.getAvgHR().toString(), "Workout Avg HR is invalid");
-        // assertEquals(workoutDetailsPage.getWorkoutKCal(), actualWorkout.getCaloriesBurned().toString(), "Workout Calories Burned is invalid");
+        assertEquals(workoutDetailsPage.getWorkoutMinHR(), actualWorkout.getMinHR().toString(), "Workout Min HR is invalid");
+        assertEquals(workoutDetailsPage.getWorkoutAvgHR(), actualWorkout.getAvgHR().toString(), "Workout Avg HR is invalid");
+        assertEquals(workoutDetailsPage.getWorkoutMaxHR(), actualWorkout.getMaxHR().toString(), "Workout Max HR is invalid");
         log.info("Create workout");
     }
 
@@ -50,17 +50,17 @@ public class FullWorkoutTest {
         updateWorkoutPage.updateWorkoutPageIsOpened();
         actualWorkout = workoutProvider.generateWorkout();
         createWorkoutPage.fillInNewWorkoutModal(actualWorkout)
-                .saveWorkout(workoutProvider.workoutName);
+                         .saveWorkout(workoutProvider.workoutName);
         assertEquals(workoutDetailsPage.getUpdateWorkoutButton().getText(), "Update Workout", "Workout is not updated");
         assertEquals(workoutDetailsPage.getWorkoutName(), actualWorkout.getWorkoutName(), "Workout Name is invalid");
-        // assertEquals(workoutDetailsPage.getWorkoutDesc(), "Workout Description:\n" + actualWorkout.getWorkoutDescription(), "Workout Description is invalid");
+        assertEquals(workoutDetailsPage.getWorkoutDesc(), "Workout Description:\n" + actualWorkout.getWorkoutDescription(), "Workout Description is invalid");
         log.info("Update workout");
     }
 
     @Test(priority = 2)
     public void deleteWorkoutTest() {
         calendarPage.open()
-                .deleteWorkout(workoutProvider.workoutName);
+                    .deleteWorkout(workoutProvider.workoutName);
         assertTrue(calendarPage.workoutIsDeleted(workoutProvider.workoutName), "Workout is not deleted");
         log.info("Delete workout");
         calendarPage.logout();
