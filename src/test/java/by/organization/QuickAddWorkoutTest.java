@@ -17,18 +17,18 @@ public class QuickAddWorkoutTest {
   @BeforeClass
   public void login() {
       new LoginPage().open()
-              .loginWithValidData();
+                     .loginWithValidData();
       quickWorkoutProvider.generateWorkout();
   }
 
     @Test(priority = 3)
     public void quickCreateWorkoutTest() {
         calendarPage.open()
-                .openQuickMenu();
+                    .openQuickMenu();
         assertTrue(calendarPage.getQuickAddTitle().isEnabled(), "Quick add new workout forms is not opened");
         log.info("Open quick workout form");
         calendarPage.fillInQuickNewWorkoutModal(quickWorkoutProvider.generateWorkout())
-                .saveQuickWorkout();
+                    .saveQuickWorkout();
         assertTrue(calendarPage.getQuickWorkoutName(quickWorkoutProvider.workoutName).isEnabled(), "Quick add new workout forms is not created");
         log.info("Quick workout create");
         }

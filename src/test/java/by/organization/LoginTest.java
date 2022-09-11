@@ -21,18 +21,18 @@ public class LoginTest {
     public void loginWithValidData() {
 
         new LoginPage().open()
-                .loginWithValidData();
+                       .loginWithValidData();
         assertTrue(calendarPage.getCalendar().isDisplayed(), "User was not logged in");
         assertThat(calendarPage.getBreadcrumbsCalendar().getText())
-                .isEqualTo("Training Calendar");
+                               .isEqualTo("Training Calendar");
     }
 
     @Test
     public void loginWithInvalidData() {
 
         new LoginPage().open()
-                .loginWithInvalidData();
+                       .loginWithInvalidData();
         assertThat(loginPage.getError().getText()).isNotNull()
-                .isEqualTo("Invalid login credentials. Please try again.");
+                            .isEqualTo("Invalid login credentials. Please try again.");
     }
 }

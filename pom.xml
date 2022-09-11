@@ -19,9 +19,9 @@
         <aspectj.version>1.9.9</aspectj.version>
         <allure-testng.version>2.19.0</allure-testng.version>
         <log4j.version>2.18.0</log4j.version>
-        <jackson.dataformat.version>2.13.3</jackson.dataformat.version>
+        <jackson.dataformat.version>2.13.4</jackson.dataformat.version>
         <lombok.version>1.18.24</lombok.version>
-        <selenide.version>6.7.2</selenide.version>
+        <selenide.version>6.7.4</selenide.version>
         <assertj.version>3.23.1</assertj.version>
         <faker.version>1.0.2</faker.version>
         <suiteXmlFile>src/main/resources/smoke.xml</suiteXmlFile>
