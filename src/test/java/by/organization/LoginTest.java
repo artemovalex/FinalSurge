@@ -25,6 +25,7 @@ public class LoginTest {
         assertTrue(calendarPage.getCalendar().isDisplayed(), "User was not logged in");
         assertThat(calendarPage.getBreadcrumbsCalendar().getText())
                                .isEqualTo("Training Calendar");
+        log.info("Login with valid data");
     }
 
     @Test
@@ -34,5 +35,24 @@ public class LoginTest {
                        .loginWithInvalidData();
         assertThat(loginPage.getError().getText()).isNotNull()
                             .isEqualTo("Invalid login credentials. Please try again.");
+        log.info("Login with invalid data");
+    }
+    @Test
+    public void loginWithoutEmail() {
+
+        new LoginPage().open()
+                       .loginWithoutEmail();
+        assertThat(loginPage.getEmailError().getText()).isNotNull()
+                            .isEqualTo("Please enter your e-mail address.");
+        log.info("Login without email");
+    }
+    @Test
+    public void loginWithoutPassword() {
+
+        new LoginPage().open()
+                       .loginWithoutPassword();
+        assertThat(loginPage.getPasswordError().getText()).isNotNull()
+                            .isEqualTo("Please enter a password.");
+        log.info("Login without password");
     }
 }

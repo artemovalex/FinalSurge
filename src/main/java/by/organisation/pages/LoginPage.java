@@ -37,7 +37,27 @@ public class LoginPage {
         new LoginPage();
     }
 
+    public void loginWithoutEmail() {
+        $(id("login_password")).shouldBe(visible).sendKeys("12345");
+        $x("//button[@type='submit']").shouldBe(visible).click();
+        new LoginPage();
+    }
+
+    public void loginWithoutPassword() {
+        $(id("login_name")).shouldBe(visible).sendKeys("test@mail.ru");
+        $x("//button[@type='submit']").shouldBe(visible).click();
+        new LoginPage();
+    }
+
     public WebElement getError() {
         return $x("//div[contains(@class, 'alert-error')]//strong");
+    }
+
+    public WebElement getEmailError() {
+        return $x("//input[@id='login_name']/following::label[@class='error']");
+    }
+
+    public WebElement getPasswordError() {
+        return $x("//input[@id='login_password']/following::label[@class='error']");
     }
 }

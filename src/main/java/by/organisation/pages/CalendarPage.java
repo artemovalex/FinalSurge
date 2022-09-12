@@ -89,7 +89,7 @@ public class CalendarPage {
     }
 
     public void logout() {
-        $x("//a[text()='Logout']").click();
+        $x("//a[text()='Logout']").scrollTo().click();
         $x("//a[text()='Account Login']").click();
     }
 }
